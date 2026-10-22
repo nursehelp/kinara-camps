@@ -240,57 +240,20 @@
       details.faq-item[open ] summary::after { content: "–"; }
       details.faq-item p { color: var(--ink-soft); padding: 0 0 16px; font-size: 0.96rem; }
 
-      /* ---------- reserve form ---------- */
-      .reserve-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; align-items: start; }
-      @media (max-width: 860px) { .reserve-grid { grid-template-columns: 1fr; } }
-      form.reserve { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); display: grid; gap: 18px; }
-      .field label { display: block; font-weight: 700; font-size: 0.92rem; margin-bottom: 7px; }
-      .field input, .field textarea {
-        width: 100%; font: inherit; font-size: 16px; color: var(--ink);
-        background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 14px; min-height: 50px;
+      /* ---------- booking enquiry ---------- */
+      .enquiry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+      @media (max-width: 820px) { .enquiry-grid { grid-template-columns: 1fr; } }
+      .enquiry-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow); padding: 26px; display: flex; flex-direction: column; gap: 12px;
       }
-      .field textarea { min-height: 0; }
-      .field input:focus, .field textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
-      .field .hint { font-size: 0.83rem; color: var(--ink-soft); margin-top: 5px; }
-      .field .err { font-size: 0.85rem; color: var(--coral); margin-top: 5px; font-weight: 600; display: none; }
-      .pick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-      @media (max-width: 480px) { .pick-grid { grid-template-columns: 1fr; } }
-      .pick { position: relative; }
-      .pick input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
-      .pick .pick-card {
-        border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 16px; height: 100%;
-        background: var(--bg); transition: border-color 0.15s ease, background 0.15s ease;
-      }
-      .pick input:checked + .pick-card { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, var(--bg)); }
-      .pick input:focus-visible + .pick-card { outline: 2px solid var(--gold); outline-offset: 2px; }
-      .pick .pick-card .t { font-weight: 800; font-family: "Bricolage Grotesque", sans-serif; }
-      .pick .pick-card .s { font-size: 0.86rem; color: var(--ink-soft); margin-top: 2px; }
-      .pick .pick-card .pr { font-weight: 700; margin-top: 6px; color: var(--teal); }
-      @media (prefers-color-scheme: dark) { .pick .pick-card .pr { color: #7fc9b4; } }
-      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-      @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
-      .summary {
-        background: var(--night); color: var(--on-night); border-radius: var(--radius); padding: 26px;
-        position: sticky; top: 84px;
-      }
-      .summary h3 { font-size: 1.3rem; }
-      .summary .row { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid rgba(247, 236, 215, 0.14); font-size: 0.96rem; }
-      .summary .row span:first-child { color: var(--on-night-soft); }
-      .summary .row.total { border-bottom: 0; font-size: 1.12rem; font-weight: 800; padding-top: 14px; }
-      .summary .row.total span:first-child { color: var(--on-night); }
-      .summary .advance { background: rgba(242, 185, 92, 0.12); border: 1px solid rgba(242, 185, 92, 0.45); border-radius: 12px; padding: 13px 15px; margin-top: 14px; font-size: 0.94rem; }
-      .summary .advance strong { color: var(--gold-bright); }
-      .summary .fine { font-size: 0.84rem; color: var(--on-night-soft); margin-top: 14px; }
-      .result { display: none; margin-top: 20px; background: var(--surface); border: 1.5px solid var(--teal); border-radius: var(--radius); padding: 24px; }
-      .result.show { display: block; }
-      .result h3 { font-size: 1.25rem; margin-bottom: 8px; }
-      .result p { color: var(--ink-soft); font-size: 0.95rem; }
-      .result pre {
-        white-space: pre-wrap; word-break: break-word; font: inherit; font-size: 0.94rem;
-        background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin: 14px 0;
-      }
-      .result .actions { display: flex; gap: 10px; flex-wrap: wrap; }
-      .copied { font-size: 0.88rem; color: var(--teal); font-weight: 700; align-self: center; display: none; }
+      .enquiry-card .when { font-weight: 700; color: var(--teal); font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+      @media (prefers-color-scheme: dark) { .enquiry-card .when { color: #7fc9b4; } }
+      .enquiry-card h3 { font-size: 1.5rem; font-weight: 800; }
+      .enquiry-card .btn { margin-top: auto; }
+      .enquiry-card .fine-note { font-size: 0.86rem; color: var(--ink-soft); }
+      .enquiry-alt { margin-top: 20px; color: var(--ink-soft); font-size: 0.95rem; }
+      .enquiry-alt a { font-weight: 700; }
 
       /* ---------- instagram band ---------- */
       .ig-band {
@@ -358,15 +321,16 @@
         }
         .mobile-nav a:active { color: var(--ink); border-color: var(--ink-soft); }
 
-        /* hero: shorter, stacked, thumb-first — one CTA only, so it clears the sticky bar */
-        .hero-in { padding: 36px 0 56px; }
+        /* hero: shorter, stacked, thumb-first — one CTA only, tightened so the CTA
+           ends above the sticky bottom bar in the first phone viewport */
+        .hero-in { padding: 22px 0 56px; }
         .hero-cta .btn.ghost { display: none; }
-        .hero h1 { font-size: clamp(2rem, 9.2vw, 2.6rem); margin-top: 16px; }
-        .hero .lede { font-size: 1rem; margin-top: 14px; }
+        .hero h1 { font-size: clamp(2rem, 9.2vw, 2.6rem); margin-top: 10px; }
+        .hero .lede { font-size: 1rem; margin-top: 10px; }
         .hero .place { font-size: 0.76rem; padding: 5px 12px; }
-        .hero-dates { flex-direction: column; gap: 10px; margin-top: 18px; }
-        .hero-date { min-width: 0; flex: none; width: 100%; padding: 12px 15px; }
-        .hero-cta { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 18px; }
+        .hero-dates { flex-direction: column; gap: 10px; margin-top: 12px; }
+        .hero-date { min-width: 0; flex: none; width: 100%; padding: 10px 15px; }
+        .hero-cta { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 12px; }
         .hero-cta .btn { width: 100%; min-height: 52px; font-size: 1rem; }
         .draft-note { font-size: 0.84rem; text-align: center; }
 
@@ -406,18 +370,9 @@
         details.faq-item { padding: 2px 16px; }
         details.faq-item summary { padding: 16px 0; min-height: 52px; font-size: 0.98rem; }
 
-        /* reserve: form first, summary un-stuck below it */
-        .reserve-grid { gap: 16px; }
-        form.reserve { padding: 18px; gap: 16px; }
-        .summary { position: static; padding: 20px; }
-        .pick-grid { grid-template-columns: 1fr; }
-        .two-col { grid-template-columns: 1fr; }
-        .pick .pick-card { padding: 15px 16px; min-height: 56px; }
-        form.reserve > .btn[type="submit"] { min-height: 54px; font-size: 1.02rem; }
-        .result { padding: 18px; }
-        .result .actions { flex-direction: column; align-items: stretch; }
-        .result .actions .btn { width: 100%; }
-        .copied { text-align: center; }
+        /* booking enquiry cards */
+        .enquiry-card { padding: 20px; }
+        .enquiry-card .btn { width: 100%; min-height: 52px; font-size: 1rem; }
 
         /* instagram band */
         .ig-band { flex-direction: column; align-items: stretch; text-align: left; padding: 20px; gap: 14px; }
@@ -499,7 +454,7 @@
           <a class="btn gold" href="#reserve">Reserve your spot</a>
           <a class="btn ghost" style="color: var(--on-night); border-color: rgba(247,236,215,0.4);" href="#camps">See the two nights</a>
         </div>
-        <p class="draft-note" style="margin-top: 18px;"><strong>Draft preview:</strong> bookings open soon — this page doesn't take payments yet.</p>
+        <p class="draft-note" style="margin-top: 18px;"><strong>Enquiries are open:</strong> send the short booking form and we'll email your invite with payment details.</p>
       </div>
     </div>
 
@@ -531,7 +486,7 @@
                 <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 6 12 13.5 4" stroke="#17705f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Breakfast before checkout</li>
               </ul>
               <div class="foot">
-                <button class="btn" type="button" data-choose="christmas">Reserve for Christmas</button>
+                <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeEFuCfkQNtxa1FziIhIMkezWph72I6_iIgJBosBvSS89UevA/viewform" target="_blank" rel="noopener">Enquire for Christmas</a>
                 <span class="times">Check-in ~4:00 pm · Checkout ~11:00 am</span>
               </div>
             </div>
@@ -557,7 +512,7 @@
                 <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 6 12 13.5 4" stroke="#17705f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bonfire, music, hosted games and photography</li>
               </ul>
               <div class="foot">
-                <button class="btn" type="button" data-choose="nye">Reserve for New Year's Eve</button>
+                <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeEFuCfkQNtxa1FziIhIMkezWph72I6_iIgJBosBvSS89UevA/viewform" target="_blank" rel="noopener">Enquire for New Year's Eve</a>
                 <span class="times">Check-in ~4:00 pm · Checkout ~11:00 am</span>
               </div>
             </div>
@@ -618,18 +573,18 @@
         <div class="steps">
           <div class="step">
             <div class="num">Step 1</div>
-            <h3>Reserve with 50%</h3>
-            <p>Fill in the reservation form below and pay half the total to lock your spot. We'll confirm your booking on WhatsApp.</p>
+            <h3>Send an enquiry</h3>
+            <p>Fill in the short booking form for your night — name, WhatsApp number, guest count and tent choice. It takes about a minute.</p>
           </div>
           <div class="step">
             <div class="num">Step 2</div>
-            <h3>Balance 7 days before</h3>
-            <p>The remaining half is due a week before your camp — 19 Dec for Christmas, 24 Dec for New Year's Eve.</p>
+            <h3>Get your invite by email</h3>
+            <p>We review every enquiry personally. If we can host you, you'll get an email with your booking reference, the total, and UPI payment details — pay 50% and send us the screenshot to lock your spot.</p>
           </div>
           <div class="step">
             <div class="num">Step 3</div>
-            <h3>Show up in Mumbai</h3>
-            <p>Meet the group at the pickup point, ride down together, and step onto the sand. Everything after that is on us.</p>
+            <h3>Balance 7 days before</h3>
+            <p>The remaining half is due a week before your camp — 19 Dec for Christmas, 24 Dec for New Year's Eve. Then just show up in Mumbai and ride down with the group.</p>
           </div>
         </div>
         <div class="guarantee">
@@ -696,7 +651,7 @@
           </details>
           <details class="faq-item">
             <summary>Can I get a private tent for two?</summary>
-            <p>Yes — add a private couple tent for ₹499 per tent when you reserve, instead of a shared tent. Pick "Private couple tent" in the form and we'll work out the number of tents from your group size.</p>
+            <p>Yes — add a private couple tent for ₹499 per tent, instead of a shared tent. Pick "Private couple tent" in the enquiry form and we'll work out the number of tents from your group size.</p>
           </details>
           <details class="faq-item">
             <summary>What if I need to cancel?</summary>
@@ -718,96 +673,38 @@
     <section id="reserve" style="padding-top: 8px;">
       <div class="wrap">
         <div class="section-head">
-          <h2>Reserve your spot</h2>
-          <p>Tell us which night, how many of you, and how you'd like to sleep. You'll get a booking summary you can copy or save — <strong>this draft doesn't take payment yet</strong>; we'll confirm on WhatsApp and share payment details when bookings open.</p>
+          <h2>Book your spot</h2>
+          <p>Booking runs in two steps. Send a short enquiry for your night — if we can host you, we'll email your booking invite with a booking reference and payment details. Pay 50% to lock your spot; the balance is due 7 days before your camp.</p>
         </div>
-        <div class="reserve-grid">
-          <form class="reserve" id="reserveForm" novalidate>
-            <div class="field">
-              <label>Which camp?</label>
-              <div class="pick-grid">
-                <label class="pick">
-                  <input type="radio" name="event" value="christmas" checked />
-                  <div class="pick-card">
-                    <div class="t">Christmas Beach Camp</div>
-                    <div class="s">Sat 26 Dec 2026 · Alibaug</div>
-                    <div class="pr" data-pick-price="christmas">₹2,699 / person</div>
-                  </div>
-                </label>
-                <label class="pick">
-                  <input type="radio" name="event" value="nye" />
-                  <div class="pick-card">
-                    <div class="t">New Year's Eve Beach Camp</div>
-                    <div class="s">Thu 31 Dec 2026 · Alibaug</div>
-                    <div class="pr" data-pick-price="nye">₹3,999 / person</div>
-                  </div>
-                </label>
-              </div>
+        <div class="enquiry-grid">
+          <article class="enquiry-card">
+            <div class="when">Saturday · 26 December 2026</div>
+            <h3>Christmas Beach Camp</h3>
+            <div class="price-row">
+              <span class="now" data-price-now="christmas">₹2,699</span>
+              <s class="was" data-price-was="christmas">₹2,999</s>
+              <span class="per">per person, all-in</span>
+              <span class="eb-tag" data-eb-tag="christmas">Early bird</span>
             </div>
-            <div class="two-col">
-              <div class="field">
-                <label for="fName">Your name</label>
-                <input id="fName" name="name" type="text" autocomplete="name" placeholder="Full name" />
-                <div class="err" data-err="name">Please tell us your name.</div>
-              </div>
-              <div class="field">
-                <label for="fPhone">WhatsApp number</label>
-                <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 98765 43210" />
-                <div class="err" data-err="phone">Enter a valid 10-digit mobile number.</div>
-              </div>
+            <p class="count-line" data-countdown="christmas"><strong>Early bird ends 30 Nov.</strong></p>
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeEFuCfkQNtxa1FziIhIMkezWph72I6_iIgJBosBvSS89UevA/viewform" target="_blank" rel="noopener">Send a booking enquiry</a>
+            <p class="fine-note">Opens our short Google Form — name, WhatsApp, guest count and tent choice. Takes about a minute.</p>
+          </article>
+          <article class="enquiry-card">
+            <div class="when">Thursday · 31 December 2026</div>
+            <h3>New Year's Eve Beach Camp</h3>
+            <div class="price-row">
+              <span class="now" data-price-now="nye">₹3,999</span>
+              <s class="was" data-price-was="nye">₹4,499</s>
+              <span class="per">per person, all-in</span>
+              <span class="eb-tag" data-eb-tag="nye">Early bird</span>
             </div>
-            <div class="two-col">
-              <div class="field">
-                <label for="fGuests">Number of guests</label>
-                <input id="fGuests" name="guests" type="number" inputmode="numeric" min="1" max="50" step="1" value="2" />
-                <div class="hint">Including you. Group of more than 10? Mention it in the notes.</div>
-                <div class="err" data-err="guests">Guests must be between 1 and 50.</div>
-              </div>
-              <div class="field">
-                <label>Tent type</label>
-                <div class="pick-grid" style="grid-template-columns: 1fr;">
-                  <label class="pick">
-                    <input type="radio" name="tent" value="sharing" checked />
-                    <div class="pick-card"><div class="t">Sharing tent</div><div class="s">Included in the price</div></div>
-                  </label>
-                  <label class="pick">
-                    <input type="radio" name="tent" value="private" />
-                    <div class="pick-card"><div class="t">Private couple tent</div><div class="s">+₹499 per tent (one tent per 2 guests)</div></div>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label for="fNotes">Anything we should know? <span style="font-weight: 500; color: var(--ink-soft);">(optional)</span></label>
-              <textarea id="fNotes" name="notes" rows="3" placeholder="Veg / non-veg split, a birthday in the group, pickup questions…"></textarea>
-            </div>
-            <button class="btn" type="submit" style="width: 100%;">Create my booking summary</button>
-            <p class="hint" style="text-align: center; color: var(--ink-soft); font-size: 0.85rem;">Nothing is charged and nothing is sent anywhere — the summary is yours to copy or download.</p>
-          </form>
-
-          <aside class="summary" aria-live="polite">
-            <h3>Your booking</h3>
-            <div class="row"><span>Camp</span><strong id="sumEvent">Christmas Beach Camp</strong></div>
-            <div class="row"><span>Date</span><strong id="sumDate">Sat 26 Dec 2026</strong></div>
-            <div class="row"><span>Price per person</span><strong id="sumPer">₹2,699</strong></div>
-            <div class="row"><span>Guests</span><strong id="sumGuests">2</strong></div>
-            <div class="row" id="sumTentRow" style="display: none;"><span>Private tents</span><strong id="sumTent">—</strong></div>
-            <div class="row total"><span>Total</span><span id="sumTotal">₹5,398</span></div>
-            <div class="advance">Payable to reserve (50%): <strong id="sumAdvance">₹2,699</strong><br /><span style="color: var(--on-night-soft);">Balance due 7 days before the camp.</span></div>
-            <p class="fine" id="sumFine">Early-bird price — ends 30 Nov 2026. If the camp doesn't reach 30 fully-paid guests by 16 Dec, you're refunded in full.</p>
-          </aside>
+            <p class="count-line" data-countdown="nye"><strong>Early bird ends 7 Dec.</strong></p>
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeEFuCfkQNtxa1FziIhIMkezWph72I6_iIgJBosBvSS89UevA/viewform" target="_blank" rel="noopener">Send a booking enquiry</a>
+            <p class="fine-note">Opens our short Google Form — name, WhatsApp, guest count and tent choice. Takes about a minute.</p>
+          </article>
         </div>
-
-        <div class="result" id="resultBox">
-          <h3>Your booking summary</h3>
-          <p>Copy it or download it, and keep it handy — when bookings open, this is exactly what you'll send us to confirm your spot.</p>
-          <pre id="resultText"></pre>
-          <div class="actions">
-            <button class="btn gold" type="button" id="copyBtn">Copy summary</button>
-            <button class="btn ghost" type="button" id="dlBtn">Download as a file</button>
-            <span class="copied" id="copiedMsg">Copied ✓</span>
-          </div>
-        </div>
+        <p class="enquiry-alt">Rather talk first? Message us on Instagram — <a href="https://www.instagram.com/kinaracamps/" target="_blank" rel="noopener">@kinaracamps</a> — and we'll send you the form link.</p>
       </div>
     </section>
 
@@ -876,7 +773,6 @@
             balanceLabel: "24 Dec"
           }
         };
-        var PRIVATE_TENT = 499;
 
         function inr(n) { return "₹" + n.toLocaleString("en-IN"); }
         function priceFor(key) {
@@ -897,137 +793,19 @@
         }
         function refreshPricing() {
           Object.keys(EVENTS).forEach(function (key) {
-            var e = EVENTS[key], eb = isEB(key);
+            var eb = isEB(key);
             document.querySelectorAll('[data-countdown="' + key + '"]').forEach(function (el) {
               el.innerHTML = "<strong>" + fmtCountdown(key) + "</strong>";
             });
             document.querySelectorAll('[data-price-now="' + key + '"]').forEach(function (el) { el.textContent = inr(priceFor(key)); });
             document.querySelectorAll('[data-price-was="' + key + '"]').forEach(function (el) { el.style.display = eb ? "" : "none"; });
             document.querySelectorAll('[data-eb-tag="' + key + '"]').forEach(function (el) { el.style.display = eb ? "" : "none"; });
-            document.querySelectorAll('[data-pick-price="' + key + '"]').forEach(function (el) { el.textContent = inr(priceFor(key)) + " / person"; });
           });
-          updateSummary();
         }
+        refreshPricing();
+        setInterval(refreshPricing, 60000);
 
-        /* ---- form + summary ---- */
-        var form = document.getElementById("reserveForm");
-        function selectedEvent() { return form.querySelector('input[name="event"]:checked').value; }
-        function selectedTent() { return form.querySelector('input[name="tent"]:checked').value; }
-        function guestCount() {
-          var v = parseInt(document.getElementById("fGuests").value, 10);
-          return isNaN(v) ? 0 : v;
-        }
-        function calc() {
-          var key = selectedEvent(), e = EVENTS[key], g = guestCount();
-          var per = priceFor(key);
-          var tents = selectedTent() === "private" ? Math.ceil(g / 2) : 0;
-          var tentCost = tents * PRIVATE_TENT;
-          var total = per * g + tentCost;
-          return { key: key, e: e, g: g, per: per, tents: tents, tentCost: tentCost, total: total, advance: Math.round(total / 2) };
-        }
-        function updateSummary() {
-          var c = calc();
-          document.getElementById("sumEvent").textContent = c.e.name;
-          document.getElementById("sumDate").textContent = c.e.dateLabel;
-          document.getElementById("sumPer").textContent = inr(c.per) + (isEB(c.key) ? " (early bird)" : "");
-          document.getElementById("sumGuests").textContent = c.g;
-          var tentRow = document.getElementById("sumTentRow");
-          if (c.tents > 0) {
-            tentRow.style.display = "";
-            document.getElementById("sumTent").textContent = c.tents + " × " + inr(PRIVATE_TENT) + " = " + inr(c.tentCost);
-          } else { tentRow.style.display = "none"; }
-          document.getElementById("sumTotal").textContent = inr(c.total);
-          document.getElementById("sumAdvance").textContent = inr(c.advance);
-          document.getElementById("sumFine").textContent = isEB(c.key)
-            ? "Early-bird price — ends " + c.e.ebEndLabel + ". Balance due " + c.e.balanceLabel + ". If the camp doesn't reach 30 fully-paid guests by " + c.e.confirmLabel + ", you're refunded in full."
-            : "Balance due " + c.e.balanceLabel + ". If the camp doesn't reach 30 fully-paid guests by " + c.e.confirmLabel + ", you're refunded in full.";
-        }
-        form.addEventListener("input", updateSummary);
-        form.addEventListener("change", updateSummary);
-
-        /* ---- event card buttons choose the event in the form ---- */
-        document.querySelectorAll("[data-choose]").forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            var radio = form.querySelector('input[name="event"][value="' + btn.getAttribute("data-choose") + '"]');
-            radio.checked = true;
-            updateSummary();
-            document.getElementById("reserve").scrollIntoView({ behavior: "smooth" });
-          });
-        });
-
-        /* ---- submit: validate, then build a summary to copy/download ---- */
-        var lastSummary = "";
-        form.addEventListener("submit", function (ev) {
-          ev.preventDefault();
-          var name = document.getElementById("fName").value.trim();
-          var phoneRaw = document.getElementById("fPhone").value.replace(/[\s-]/g, "");
-          var phone = phoneRaw.replace(/^\+91/, "").replace(/^91(?=\d{10}$)/, "");
-          var g = guestCount();
-          var ok = true;
-          function setErr(field, bad) {
-            var el = document.querySelector('[data-err="' + field + '"]');
-            el.style.display = bad ? "block" : "none";
-            if (bad) ok = false;
-          }
-          setErr("name", name.length < 2);
-          setErr("phone", !/^[6-9]\d{9}$/.test(phone));
-          setErr("guests", g < 1 || g > 50);
-          if (!ok) return;
-
-          var c = calc();
-          var notes = document.getElementById("fNotes").value.trim();
-          var lines = [
-            "KINARA CAMPS — BOOKING REQUEST",
-            "--------------------------------",
-            "Camp: " + c.e.name,
-            "Date: " + c.e.dateLabel + " (check-in ~4:00 pm, checkout ~11:00 am)",
-            "Name: " + name,
-            "WhatsApp: +91 " + phone,
-            "Guests: " + c.g,
-            "Tent: " + (c.tents > 0 ? "Private couple tent × " + c.tents : "Sharing tent"),
-            "Price per person: " + inr(c.per) + (isEB(c.key) ? " (early bird)" : ""),
-            c.tents > 0 ? "Private tent add-on: " + inr(c.tentCost) : null,
-            "Total: " + inr(c.total),
-            "Advance to reserve (50%): " + inr(c.advance),
-            "Balance due: " + c.e.balanceLabel + " (7 days before)",
-            notes ? "Notes: " + notes : null,
-            "--------------------------------",
-            "Policy: the camp runs only at 30+ fully-paid guests by " + c.e.confirmLabel + "; otherwise a full refund within 5 working days."
-          ].filter(Boolean);
-          lastSummary = lines.join("\n");
-          document.getElementById("resultText").textContent = lastSummary;
-          var box = document.getElementById("resultBox");
-          box.classList.add("show");
-          box.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        });
-
-        document.getElementById("copyBtn").addEventListener("click", function () {
-          var done = function () {
-            var m = document.getElementById("copiedMsg");
-            m.style.display = "inline";
-            setTimeout(function () { m.style.display = "none"; }, 2200);
-          };
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(lastSummary).then(done, function () { fallbackCopy(); done(); });
-          } else { fallbackCopy(); done(); }
-          function fallbackCopy() {
-            var ta = document.createElement("textarea");
-            ta.value = lastSummary; document.body.appendChild(ta);
-            ta.select(); try { document.execCommand("copy"); } catch (e) {}
-            document.body.removeChild(ta);
-          }
-        });
-        document.getElementById("dlBtn").addEventListener("click", function () {
-          var blob = new Blob([lastSummary], { type: "text/plain" });
-          var url = URL.createObjectURL(blob);
-          var a = document.createElement("a");
-          a.href = url; a.download = "kinara-camps-booking.txt";
-          document.body.appendChild(a); a.click();
-          document.body.removeChild(a);
-          setTimeout(function () { URL.revokeObjectURL(url); }, 500);
-        });
-
-        /* ---- sticky mobile bar: hides only while the form is on screen ---- */
+        /* ---- sticky mobile bar: hides only while the booking section is on screen ---- */
         var mobileCta = document.getElementById("mobileCta");
         if (mobileCta && "IntersectionObserver" in window) {
           var io = new IntersectionObserver(function (entries) {
@@ -1038,10 +816,8 @@
           var reserveSec = document.getElementById("reserve");
           if (reserveSec) io.observe(reserveSec);
         }
-
-        refreshPricing();
-        setInterval(refreshPricing, 60000);
       })();
     </script>
+
   </body>
 </html>
